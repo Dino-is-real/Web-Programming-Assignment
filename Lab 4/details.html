@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Details by - 23BCE1237</title>
+    <style>
+        .per{
+            color:red;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+            
+        }
+        body{
+            
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+    </style>
+</head>
+<body >
+    <form>
+    <fieldset>
+        <legend class="per">Personal Details</legend>
+        
+            <label for="fname">Name &nbsp;&nbsp;&nbsp;:</label>
+            <input type="text" name="fname"><br><br>
+            <label for="pass">Password &nbsp;&nbsp;&nbsp;:</label>
+            <input type="password" name="pass"><br><br>
+            <label for="email">E-mail id &nbsp;&nbsp;&nbsp;:</label>
+            <input type="email" name="email"><br><br>
+            <label for="gender">Gender &nbsp;&nbsp;&nbsp;:</label>
+            <input type="radio" name="gender" value="male">Male
+            <input type="radio" name="gender" value="female">Female
+            <br><br>DOB : <input type="date" name="bday"><br><br> 
+            Mobile# : <input type="tel" name="mobile" pattern="[1-9]{9}[0-9]"><br><br>
+       
+    </fieldset>
+    <br><br><br><br>
+    <fieldset>
+        <legend class="per">Educational Qualifications</legend>
+        Degree:<select name="degree" id="degree">
+            <option>--Select--</option>
+            <optgroup label="UG">
+                <option>BE</option>
+                <option>B.Tech</option>
+                <option>Bsc</option>
+                <option>BA</option>
+                <option>BBA</option>
+                <option>BCA</option>
+            </optgroup>
+            <optgroup label="PG">
+                <option>ME</option>
+                <option>M.Tech</option>
+                <option>Msc</option>
+                <option>MA</option>
+                <option>MBA</option>
+                <option>MCA</option>
+            </optgroup>
+            <optgroup label="PhD">
+                <option>Engineering</option>
+                <option>Science</option>
+                <option>Management</option>
+            
+                
+            </optgroup>
+        </select>
+        Engineering:
+        <select name="engg" id="engg">
+            <option>CSE</option>
+            <option>ECE</option>
+            <option>EEE</option>
+            <option>CIVIL</option>
+            <option>MECH</option>
+
+        </select> 
+    
+    
+    
+    
+    
+    </fieldset>
+
+    Hobbies: <input type="checkbox" name="hobb">Playing Chess &nbsp;&nbsp;
+    <input type="checkbox" name="hobb">Reading books
+
+    <br>
+    Favourite color: <input type="color">
+    <p class="per">Address</p>
+    <textarea name="comments" rows="20" cols="60">
+        
+    </textarea>
+    <br>
+    Attach Resume: <input type="file" name="fileup">
+    <br>
+    <input type="submit" class="submit">
+    <input type="reset" class="submit">
+    </form>
+    
+
+
+
+
+</body>
+</html>

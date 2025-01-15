@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title >Review by - 23BCE1237</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="range"] {
+            width: 100%;
+            margin: 10px 0;
+        }
+        output {
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .total {
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <center><h1>Product Review</h1></center>
+    <form oninput="a_output.value=a.value; b_output.value=b.value; c_output.value=c.value; total.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value)">
+        <label for="a">Product Quality:</label>
+        <input type="range" id="a" name="a" value="50" min="0" max="100" step="1">
+        <output id="a_output">50</output>
+
+        <label for="b">Customer Service:</label>
+        <input type="range" id="b" name="b" value="60" min="0" max="100" step="1">
+        <output id="b_output">60</output>
+
+        <label for="c">Delivery Speed:</label>
+        <input type="range" id="c" name="c" value="70" min="0" max="100" step="1">
+        <output id="c_output">70</output>
+
+        <div class="total">
+            Total = <output name="total" id="total">180</output>
+        </div>
+    </form>
+</body>
+</html>
