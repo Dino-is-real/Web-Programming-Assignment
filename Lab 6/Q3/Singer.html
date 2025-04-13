@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>23BCE1237</title>
+    <style>
+        .myphto {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 2px solid greenyellow;
+            display: block;
+            margin: 20px auto;
+            object-fit: cover;
+        }
+
+        @keyframes titleAnimation {
+            0% {
+                color: #FD9FAA;
+                font-size: 18px;
+            }
+            50% {
+                color: #1F7B99;
+                font-size: 22px;
+            }
+            100% {
+                color: #FD9FAA;
+                font-size: 18px;
+            }
+        }
+
+        .title {
+            text-align: center;
+            font-weight: bold;
+            animation: titleAnimation 3s infinite;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">My Favourite Singer</h1>
+    <h1 class="title">Coldplay</h1>
+    <img src="coldplay.jpg" alt="My Favourite Singer" class="myphto">
+</body>
+</html>
