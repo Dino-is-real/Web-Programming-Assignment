@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>23BCE1237</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #a0ac88; 
+      padding: 20px;
+    }
+    h1 {
+      color: #fff;
+    }
+    .receipt-container {
+      background: #d2d8c7;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 400px;
+    }
+    p, h2, h3 {
+      margin: 8px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Order Receipt</h1>
+  
+  <div class="receipt-container" id="receipt"></div>
+
+  <script>
+    
+    function getQueryParams() {
+      const params = {};
+      const queryString = window.location.search.slice(1); 
+      const parts = queryString.split('&');
+      for (let i = 0; i < parts.length; i++) {
+        const [key, value] = parts[i].split('=');
+        params[decodeURIComponent(key)] = decodeURIComponent(value || '');
+      }
+      return params;
+    }
+
+    
+    const queryParams = getQueryParams();
+    const customerName = queryParams.customerName || '';
+    const phoneNumber  = queryParams.phoneNumber || '';
+    const email        = queryParams.email || '';
+    const appleQty     = parseInt(queryParams.appleQty) || 0;
+    const bananaQty    = parseInt(queryParams.bananaQty) || 0;
+    const avocadoQty   = parseInt(queryParams.avocadoQty) || 0;
+
+ 
+    const applePrice   = 10;
+    const bananaPrice  = 5;
+    const avocadoPrice = 7;
+
+  
+    const appleTotal   = appleQty   * applePrice;
+    const bananaTotal  = bananaQty  * bananaPrice;
+    const avocadoTotal = avocadoQty * avocadoPrice;
+    const grandTotal   = appleTotal + bananaTotal + avocadoTotal;
+
+  
+    const receiptDiv = document.getElementById('receipt');
+    receiptDiv.innerHTML = `
+      <p><strong>Customer Name:</strong> ${customerName}</p>
+      <p><strong>Phone Number:</strong> ${phoneNumber}</p>
+      <p><strong>Email:</strong> ${email}</p>
+
+      <h2>Order Details</h2>
+      <p>Apple: ${appleQty} kg @ $${applePrice}/kg = $${appleTotal}</p>
+      <p>Banana: ${bananaQty} kg @ $${bananaPrice}/kg = $${bananaTotal}</p>
+      <p>Avocado: ${avocadoQty} kg @ $${avocadoPrice}/kg = $${avocadoTotal}</p>
+
+      <h3>Total: $${grandTotal}</h3>
+    `;
+  </script>
+</body>
+</html>

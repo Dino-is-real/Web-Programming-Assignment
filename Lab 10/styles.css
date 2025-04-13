@@ -1,0 +1,35 @@
+body {
+    font-family: 'Verdana', sans-serif;
+    text-align: center;
+    background-color: #eaeaea;
+}
+
+h1 {
+    color: darkblue;
+}
+
+.input-box {
+    display: block;
+    margin: 15px auto;
+    padding: 8px;
+    width: 220px;
+    border: 2px solid gray;
+}
+
+p {
+    font-size: 17px;
+    color: darkolivegreen;
+}
+
+button {
+    padding: 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: 12px;
+}
+
+button:hover {
+    background-color: #218838;
+}

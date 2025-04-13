@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>23BCE1237</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #a0ac88; /* Light green background */
+      padding: 20px;
+    }
+    h1 {
+      color: #fff;
+    }
+    form {
+      background: #d2d8c7;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 300px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      background: #6b705c;
+      color: #fff;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #4d4f46;
+    }
+    .product-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.product-item img.product-img {
+  width: 40px;     /* Adjust to desired size */
+  height: 40px;    /* Adjust to desired size */
+  margin-right: 10px;
+}
+
+  </style>
+</head>
+<body>
+  <h1>Grocery Order Form</h1>
+  
+  <form onsubmit="handleSubmit(event)">
+    <!-- Customer Info -->
+    <label for="customerName">Customer Name</label>
+    <input type="text" id="customerName" name="customerName" required />
+
+    <label for="phoneNumber">Phone Number</label>
+    <input type="tel" id="phoneNumber" name="phoneNumber" required />
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required />
+
+    <!-- Products -->
+   <!-- Products -->
+<h2>Products</h2>
+
+<!-- Apple -->
+<div class="product-item">
+  <img src="images/apple.png" alt="Apple" class="product-img" />
+  <label for="appleQty">Apple ($10/kg)</label>
+  <input type="number" id="appleQty" name="appleQty" min="0" value="0" />
+</div>
+
+<!-- Banana -->
+<div class="product-item">
+  <img src="images/banana.png" alt="Banana" class="product-img" />
+  <label for="bananaQty">Banana ($5/kg)</label>
+  <input type="number" id="bananaQty" name="bananaQty" min="0" value="0" />
+</div>
+
+<!-- Avocado -->
+<div class="product-item">
+  <img src="images/avocado.png" alt="Avocado" class="product-img" />
+  <label for="avocadoQty">Avocado ($7/kg)</label>
+  <input type="number" id="avocadoQty" name="avocadoQty" min="0" value="0" />
+</div>
+
+
+    <!-- Submit Button -->
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault(); // Prevent default form submission
+
+      // Grab values from the form
+      const customerName = document.getElementById('customerName').value;
+      const phoneNumber = document.getElementById('phoneNumber').value;
+      const email       = document.getElementById('email').value;
+      const appleQty    = document.getElementById('appleQty').value;
+      const bananaQty   = document.getElementById('bananaQty').value;
+      const avocadoQty  = document.getElementById('avocadoQty').value;
+
+      // Build a query string to pass the data
+      const queryString = `?customerName=${encodeURIComponent(customerName)}`
+                        + `&phoneNumber=${encodeURIComponent(phoneNumber)}`
+                        + `&email=${encodeURIComponent(email)}`
+                        + `&appleQty=${appleQty}`
+                        + `&bananaQty=${bananaQty}`
+                        + `&avocadoQty=${avocadoQty}`;
+
+      // Redirect to the receipt page with the data in the URL
+      window.location.href = 'receipt.html' + queryString;
+    }
+  </script>
+</body>
+</html>

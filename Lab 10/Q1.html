@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23BCE1237</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Patient Data Operations</h2>
+
+    <button onclick="displaySortedPatients()">Sort by Age</button>
+    <button onclick="checkPatient()">Check P-Id</button>
+    <button onclick="filterPatients()">Filter by Age</button>
+
+    <table id="patientTable">
+        <thead>
+            <tr>
+                <th>P-Id</th>
+                <th>Name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        const patients = [
+            { PId: 1, Name: "Alen", Age: 39 },
+            { PId: 2, Name: "Deena", Age: 47 },
+            { PId: 3, Name: "Diana", Age: 21 },
+            { PId: 4, Name: "Jack", Age: 54 },
+            { PId: 5, Name: "Jain", Age: 23 },
+            { PId: 6, Name: "Kelvin", Age: 61 },
+            { PId: 7, Name: "Louis", Age: 69 },
+            { PId: 8, Name: "Rex", Age: 49 }
+        ];
+
+        function displayPatients(patientList) {
+            let tableBody = document.querySelector("#patientTable tbody");
+            tableBody.innerHTML = "";
+            patientList.forEach(patient => {
+                let row = `<tr>
+                    <td>${patient.PId}</td>
+                    <td>${patient.Name}</td>
+                    <td>${patient.Age}</td>
+                </tr>`;
+                tableBody.innerHTML += row;
+            });
+        }
+
+        function displaySortedPatients() {
+            let sortedPatients = [...patients].sort((a, b) => b.Age - a.Age);
+            displayPatients(sortedPatients);
+        }
+
+        function checkPatient() {
+            let id = parseInt(prompt("Enter P-Id to check:"));
+            let found = patients.some(p => p.PId === id);
+            alert(found ? `P-Id ${id} is present.` : `P-Id ${id} not found.`);
+        }
+
+        function filterPatients() {
+            let minAge = parseInt(prompt("Enter minimum age:"));
+            let maxAge = parseInt(prompt("Enter maximum age:"));
+            let filteredPatients = patients.filter(p => p.Age >= minAge && p.Age <= maxAge);
+            displayPatients(filteredPatients);
+        }
+
+        displayPatients(patients);
+    </script>
+
+</body>
+</html>
