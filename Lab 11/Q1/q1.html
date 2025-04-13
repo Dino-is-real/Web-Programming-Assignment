@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 11 - Q1</title>
+<style>
+    #colorButton { background-color: red; }
+    #myTextbox { background-color: green; }
+</style>
+</head>
+<body>
+
+<!-- Dynamic Table -->
+<button onclick="createTable()">Create Table</button>
+<div id="table-container"></div>
+<hr>
+
+<!-- Button Color Change on Hover -->
+<button id="colorButton">Hover me!</button>
+<hr>
+
+<!-- Textbox Color Change on Focus and Greeting on Change -->
+<input type="text" id="myTextbox" placeholder="Type something...">
+<hr>
+
+<!-- Add List Item on Double Click -->
+<input type="text" id="inputText" placeholder="Enter item">
+<button ondblclick="addItem()">Add Item</button>
+<ul id="itemList"></ul>
+<hr>
+
+<!-- Key Press Counter -->
+<input type="text" id="textInput" onkeypress="countKeyPress()" placeholder="Type to count key presses">
+<p>Key Press Count: <span id="keyCount">0</span></p>
+
+<script>
+    // (i) Create a dynamic table with three rows and three columns
+    function createTable() {
+        const table = document.createElement("table");
+        table.border = 1;
+        for (let i = 0; i < 3; i++) {
+            const row = table.insertRow();
+            for (let j = 0; j < 3; j++) {
+                const cell = row.insertCell();
+                cell.textContent = `Row ${i + 1}, Col ${j + 1}`;
+            }
+        }
+        document.getElementById("table-container").appendChild(table);
+    }
+
+    // (ii) Change button color on mouse over and out
+    const button = document.getElementById("colorButton");
+    button.onmouseover = () => button.style.backgroundColor = "green";
+    button.onmouseout = () => button.style.backgroundColor = "red";
+
+    // (iii) Change textbox color on focus and show greeting on change
+    const textbox = document.getElementById("myTextbox");
+    textbox.onfocus = () => textbox.style.backgroundColor = "yellow";
+    textbox.onblur = () => textbox.style.backgroundColor = "green";
+    textbox.onchange = () => alert("Hello! You changed the text.");
+
+    // (iv) Add list item on double-click
+    function addItem() {
+        const input = document.getElementById("inputText").value;
+        if (input.trim()) {
+            const li = document.createElement("li");
+            li.textContent = input;
+            document.getElementById("itemList").appendChild(li);
+            document.getElementById("inputText").value = "";  // Clear input after adding
+        } else {
+            alert("Please enter a valid item.");
+        }
+    }
+
+    // (v) Key press counter
+    let count = 0;
+    function countKeyPress() {
+        count++;
+        document.getElementById("keyCount").textContent = count;
+    }
+</script>
+
+</body>
+</html>

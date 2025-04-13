@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>23BCE1237</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        padding: 20px;
+        text-align: center;
+    }
+    button {
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        margin: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    button:hover {
+        background-color: #2980b9;
+    }
+    #content-container {
+        background-color: #fff;
+        padding: 20px;
+        margin-top: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    #stopwatch, #ageDisplay, #charCount {
+        font-size: 18px;
+        margin: 10px 0;
+    }
+    input, textarea {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        width: 80%;
+        max-width: 400px;
+    }
+    textarea {
+        height: 100px;
+        resize: vertical;
+    }
+    hr {
+        border: 0;
+        height: 1px;
+        background: #ddd;
+        margin: 20px 0;
+    }
+</style>
+</head>
+<body>
+
+<button onclick="createElements()">Create Elements</button>
+<div id="content-container"></div>
+
+<script>
+function createElements() {
+    const container = document.getElementById("content-container");
+    container.innerHTML = "";
+
+    const stopwatchContainer = document.createElement("div");
+    
+    const startBtn = document.createElement("button");
+    startBtn.textContent = "Start";
+    startBtn.onclick = start;
+
+    const stopBtn = document.createElement("button");
+    stopBtn.textContent = "Stop";
+    stopBtn.onclick = stop;
+
+    const resetBtn = document.createElement("button");
+    resetBtn.textContent = "Reset";
+    resetBtn.onclick = reset;
+
+    const timerDisplay = document.createElement("p");
+    timerDisplay.id = "stopwatch";
+    timerDisplay.textContent = "00:00";
+
+    stopwatchContainer.appendChild(startBtn);
+    stopwatchContainer.appendChild(stopBtn);
+    stopwatchContainer.appendChild(resetBtn);
+    stopwatchContainer.appendChild(timerDisplay);
+
+    container.appendChild(stopwatchContainer);
+    container.appendChild(document.createElement("hr"));
+
+    const dobInput = document.createElement("input");
+    dobInput.type = "date";
+    dobInput.id = "dob";
+    dobInput.placeholder = "Enter Date of Birth";
+    dobInput.onmouseover = calculateAge;
+
+    const ageDisplay = document.createElement("p");
+    ageDisplay.id = "ageDisplay";
+    
+    container.appendChild(dobInput);
+    container.appendChild(ageDisplay);
+    container.appendChild(document.createElement("hr"));
+
+    const textArea = document.createElement("textarea");
+    textArea.id = "textArea";
+    textArea.placeholder = "Type here...";
+    textArea.oninput = charCount;
+
+    const charCountDisplay = document.createElement("p");
+    charCountDisplay.innerHTML = 'Characters: <span id="charCount">0</span>';
+    
+    container.appendChild(textArea);
+    container.appendChild(charCountDisplay);
+}
+
+let timer, sec = 0;
+function start() {
+    if (!timer) {
+        timer = setInterval(() => {
+            sec++;
+            document.getElementById("stopwatch").textContent = 
+                new Date(sec * 1000).toISOString().substr(14, 5);
+        }, 1000);
+    }
+}
+function stop() {
+    clearInterval(timer);
+    timer = null;
+}
+function reset() {
+    sec = 0;
+    document.getElementById("stopwatch").textContent = "00:00";
+    stop();
+}
+
+function calculateAge() {
+    const dob = new Date(document.getElementById("dob").value);
+    if (!isNaN(dob)) {
+        const age = new Date().getFullYear() - dob.getFullYear();
+        document.getElementById("ageDisplay").textContent = `Age: ${age}`;
+    }
+}
+
+function charCount() {
+    const count = document.getElementById("textArea").value.length;
+    document.getElementById("charCount").textContent = count;
+}
+</script>
+
+</body>
+</html>

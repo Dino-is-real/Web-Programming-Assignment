@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>23BCE1237</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  .error-msg { color: #f00; font-size: 0.875rem; display: none; }
+  .border-red { border-color: #f00; }
+</style>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+<div class="bg-white p-6 rounded-lg shadow-md w-[800px] relative">
+  <h2 class="text-2xl font-bold mb-4 text-center">Test JavaScript Form Validation</h2>
+  <div id="clock" class="absolute top-4 right-4 border p-1 text-sm"></div>
+  <form id="myForm" class="grid grid-cols-2 gap-4" onsubmit="return validateForm()">
+    <label>Name* <input type="text" id="name" class="w-full p-1 mb-1 border rounded"></label>
+    <span id="nameError" class="error-msg">Please enter your name!</span>
+
+    <label>Address <input type="text" id="address" class="w-full p-1 mb-1 border rounded"></label>
+    <label>Zip Code* <input type="text" id="zip" class="w-full p-1 mb-1 border rounded"></label>
+    <span id="zipError" class="error-msg">Please enter a valid 5-digit zip code!</span>
+
+    <label>Country* <select id="country" class="w-full p-1 mb-1 border rounded">
+      <option value="">Please select...</option>
+      <option>USA</option><option>Canada</option><option>India</option>
+    </select></label>
+    <span id="countryError" class="error-msg">Please select a country!</span>
+
+    <label>Gender*
+      <input type="radio" name="gender" value="Male"> Male
+      <input type="radio" name="gender" value="Female"> Female
+    </label>
+    <span id="genderError" class="error-msg">Please select your gender!</span>
+
+    <label>Phone* <input type="text" id="phone" class="w-full p-1 mb-1 border rounded"></label>
+    <span id="phoneError" class="error-msg">Please enter a valid phone number!</span>
+
+    <label>Email* <input type="email" id="email" class="w-full p-1 mb-1 border rounded"></label>
+    <span id="emailError" class="error-msg">Please enter a valid email!</span>
+
+    <label>Password* <input type="password" id="password" class="w-full p-1 mb-1 border rounded"></label>
+    <span id="passwordError" class="error-msg">Password must be at least 6 characters!</span>
+
+    <label>Verify Password* <input type="password" id="confirm-password" class="w-full p-1 mb-1 border rounded"></label>
+    <span id="confirmPasswordError" class="error-msg">Passwords do not match!</span>
+
+    <div class="col-span-2 flex justify-between">
+      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">SEND</button>
+      <button type="reset" class="bg-gray-300 text-black px-4 py-2 rounded">CLEAR</button>
+    </div>
+  </form>
+</div>
+<script>
+  const clock = document.getElementById('clock');
+  setInterval(() => {
+    const now = new Date();
+    clock.textContent = `Time: ${now.toLocaleTimeString()}`;
+  }, 1000);
+
+  function validateForm() {
+    let isValid = true;
+    const name = document.getElementById('name').value;
+    const zip = document.getElementById('zip').value;
+    const country = document.getElementById('country').value;
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+
+    if (!name) { isValid = false; document.getElementById('nameError').style.display = 'block'; }
+    if (!/^[0-9]{5}$/.test(zip)) { isValid = false; document.getElementById('zipError').style.display = 'block'; }
+    if (!country) { isValid = false; document.getElementById('countryError').style.display = 'block'; }
+    if (!/^[0-9]{10}$/.test(phone)) { isValid = false; document.getElementById('phoneError').style.display = 'block'; }
+    if (!email.includes('@')) { isValid = false; document.getElementById('emailError').style.display = 'block'; }
+    if (password.length < 6) { isValid = false; document.getElementById('passwordError').style.display = 'block'; }
+    if (password !== confirmPassword) { isValid = false; document.getElementById('confirmPasswordError').style.display = 'block'; }
+
+    return isValid;
+  }
+</script>
+</body>
+</html>

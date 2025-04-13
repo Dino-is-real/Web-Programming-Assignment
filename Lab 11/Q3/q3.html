@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 11 - Q3</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        padding: 20px;
+        text-align: center;
+    }
+    button {
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        margin: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    button:hover {
+        background-color: #2980b9;
+    }
+    #content-container {
+        background-color: #fff;
+        padding: 20px;
+        margin-top: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: left;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    input, textarea, select {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    .error {
+        color: red;
+        font-size: 14px;
+    }
+</style>
+</head>
+<body>
+
+<button onclick="createForm()">Create Form</button>
+<div id="content-container"></div>
+
+<script>
+function createForm() {
+    const container = document.getElementById("content-container");
+    container.innerHTML = "";
+
+    const timeDisplay = document.createElement("p");
+    timeDisplay.id = "currentTime";
+    container.appendChild(timeDisplay);
+    setInterval(() => {
+        timeDisplay.textContent = "Current Time: " + new Date().toLocaleTimeString();
+    }, 1000);
+
+    const form = document.createElement("form");
+    form.id = "myForm";
+    form.onsubmit = (e) => {
+        e.preventDefault();
+        if (validateForm()) {
+            printForm();
+        }
+    };
+
+    form.innerHTML = `
+        <label>Name:* <input type="text" name="name" maxlength="15" required></label>
+        <label>Address:* <textarea name="address" required></textarea></label>
+        <label>Zip Code:* <input type="text" name="zip" maxlength="6" required></label>
+        <label>Phone:* <input type="text" name="phone" maxlength="10" required></label>
+        <label>Email:* <input type="email" name="email" required></label>
+        <label>Password:* <input type="password" name="password" required></label>
+        <label>PAN:* <input type="text" name="pan" maxlength="10" required></label>
+        <label>Gender:* 
+            <select name="gender" required>
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+        </label>
+        <label>Country:* 
+            <select name="country" required>
+                <option value="">Select Country</option>
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+            </select>
+        </label>
+        <label>Preferences: <input type="text" name="preferences"></label>
+        <button type="submit">Submit</button>
+        <p id="errorMessages" class="error"></p>
+    `;
+
+    container.appendChild(form);
+}
+
+function printForm() {
+    const form = document.forms["myForm"];
+    console.log("Gender:", form["gender"].value);
+    console.log("Country:", form["country"].value);
+    console.log("Preferences:", form["preferences"].value);
+    alert("Form Submitted Successfully!");
+}
+
+function validateForm() {
+    const form = document.forms["myForm"];
+    const errorMessages = [];
+    const zip = form["zip"].value;
+    const phone = form["phone"].value;
+    const email = form["email"].value;
+    const password = form["password"].value;
+    const pan = form["pan"].value;
+    const errorDisplay = document.getElementById("errorMessages");
+
+    if (zip && !/^\d{6}$/.test(zip)) {
+        errorMessages.push("Zip code must be 6 digits.");
+    }
+    if (phone && !/^\d{10}$/.test(phone)) {
+        errorMessages.push("Phone number must be 10 digits.");
+    }
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        errorMessages.push("Invalid email format.");
+    }
+    if (password && !/^(?=.*\d)(?=.*[a-zA-Z])(?=.*[@#$%^&+=]).{8,15}$/.test(password)) {
+        errorMessages.push("Password must be 8-15 characters, including a digit, a letter, and a special character.");
+    }
+    if (pan && !/^[A-Z]{5}[0-9]{4}[A-Z]$/.test(pan)) {
+        errorMessages.push("Invalid PAN format. Must be 10 characters: 5 letters, 4 digits, 1 letter.");
+    }
+
+    if (errorMessages.length > 0) {
+        errorDisplay.textContent = errorMessages.join(" ");
+        return false;
+    } else {
+        errorDisplay.textContent = "";
+        return true;
+    }
+}
+</script>
+
+</body>
+</html>

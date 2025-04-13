@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 11 - Q2</title>
+</head>
+<body>
+
+<!-- Button to Create Stopwatch, Age Calculator, and Character Counter -->
+<button onclick="createElements()">Create Elements</button>
+<div id="content-container"></div>
+
+<script>
+function createElements() {
+    const container = document.getElementById("content-container");
+    container.innerHTML = ""; // Clear previous content if any
+
+    // (i) Create a Simple Stopwatch
+    const stopwatchContainer = document.createElement("div");
+    
+    const startBtn = document.createElement("button");
+    startBtn.textContent = "Start";
+    startBtn.onclick = start;
+
+    const stopBtn = document.createElement("button");
+    stopBtn.textContent = "Stop";
+    stopBtn.onclick = stop;
+
+    const resetBtn = document.createElement("button");
+    resetBtn.textContent = "Reset";
+    resetBtn.onclick = reset;
+
+    const timerDisplay = document.createElement("p");
+    timerDisplay.id = "stopwatch";
+    timerDisplay.textContent = "00:00";
+
+    stopwatchContainer.appendChild(startBtn);
+    stopwatchContainer.appendChild(stopBtn);
+    stopwatchContainer.appendChild(resetBtn);
+    stopwatchContainer.appendChild(timerDisplay);
+
+    container.appendChild(stopwatchContainer);
+    container.appendChild(document.createElement("hr"));
+
+    // (ii) Age Calculator on Mouseover
+    const dobInput = document.createElement("input");
+    dobInput.type = "date";
+    dobInput.id = "dob";
+    dobInput.placeholder = "Enter Date of Birth";
+    dobInput.onmouseover = calculateAge;
+
+    const ageDisplay = document.createElement("p");
+    ageDisplay.id = "ageDisplay";
+    
+    container.appendChild(dobInput);
+    container.appendChild(ageDisplay);
+    container.appendChild(document.createElement("hr"));
+
+    // (iii) Textarea with Character Counter
+    const textArea = document.createElement("textarea");
+    textArea.id = "textArea";
+    textArea.placeholder = "Type here...";
+    textArea.oninput = charCount;
+
+    const charCountDisplay = document.createElement("p");
+    charCountDisplay.innerHTML = 'Characters: <span id="charCount">0</span>';
+    
+    container.appendChild(textArea);
+    container.appendChild(charCountDisplay);
+}
+
+// Stopwatch Functionality
+let timer, sec = 0;
+function start() {
+    if (!timer) {
+        timer = setInterval(() => {
+            sec++;
+            document.getElementById("stopwatch").textContent = 
+                new Date(sec * 1000).toISOString().substr(14, 5);
+        }, 1000);
+    }
+}
+function stop() {
+    clearInterval(timer);
+    timer = null;
+}
+function reset() {
+    sec = 0;
+    document.getElementById("stopwatch").textContent = "00:00";
+    stop();
+}
+
+// Age Calculator on Mouseover
+function calculateAge() {
+    const dob = new Date(document.getElementById("dob").value);
+    if (!isNaN(dob)) {
+        const age = new Date().getFullYear() - dob.getFullYear();
+        document.getElementById("ageDisplay").textContent = `Age: ${age}`;
+    }
+}
+
+// Character Counter
+function charCount() {
+    const count = document.getElementById("textArea").value.length;
+    document.getElementById("charCount").textContent = count;
+}
+</script>
+
+</body>
+</html>

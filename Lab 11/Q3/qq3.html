@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Form Validation</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  .error-msg { color: #f00; font-size: 0.875rem; }
+  .border-red { border-color: #f00; }
+</style>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+<div class="bg-white p-6 rounded-lg shadow-md w-[800px] relative">
+  <h2 class="text-2xl font-bold mb-4 text-center">Test JavaScript Form Validation</h2>
+  <div id="clock" class="absolute top-4 right-4 border p-1 text-sm"></div>
+  <form id="myForm" class="grid grid-cols-2 gap-4">
+    <label>Name* <input type="text" id="name" class="w-full p-1 mb-1 border rounded"></label>
+    <span id="nameError" class="error-msg">Please enter your name!</span>
+
+    <label>Address <input type="text" id="address" class="w-full p-1 mb-1 border rounded"></label>
+    <label>Zip Code* <input type="text" id="zip" class="w-full p-1 mb-1 border rounded"></label>
+
+    <label>Country* <select id="country" class="w-full p-1 mb-1 border rounded">
+      <option>Please select...</option>
+      <option>USA</option><option>Canada</option><option>India</option>
+    </select></label>
+
+    <label>Gender*
+      <input type="radio" name="gender" value="Male"> Male
+      <input type="radio" name="gender" value="Female"> Female
+    </label>
+
+    <label>Preferences* <input type="checkbox"> Red <input type="checkbox"> Green <input type="checkbox"> Blue</label>
+    <label>Phone* <input type="text" id="phone" class="w-full p-1 mb-1 border rounded"></label>
+
+    <label>Email* <input type="email" id="email" class="w-full p-1 mb-1 border rounded"></label>
+    <label>Password* <input type="password" id="password" class="w-full p-1 mb-1 border rounded"></label>
+
+    <label>Verify Password* <input type="password" id="confirm-password" class="w-full p-1 mb-1 border rounded"></label>
+
+    <div class="col-span-2 flex justify-between">
+      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">SEND</button>
+      <button type="reset" class="bg-gray-300 text-black px-4 py-2 rounded">CLEAR</button>
+    </div>
+  </form>
+</div>
+<script>
+  const clock = document.getElementById('clock');
+  setInterval(() => {
+    const now = new Date();
+    clock.textContent = `Time: ${now.toLocaleTimeString()}`;
+  }, 1000);
+</script>
+</body>
+</html>
