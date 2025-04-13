@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23BCE1237</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 20px auto;
+            border: 2px solid black;
+        }
+        .box {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            text-align: center;
+            line-height: 150px;
+            font-size: 18px;
+            color: white;
+            font-weight: bold;
+            border-radius: 10px;
+        }
+        .box1 { background: red; top: 20px; left: 20px; z-index: 1; }
+        .box2 { background: blue; top: 50px; left: 50px; z-index: 2; }
+        .box3 { background: green; top: 80px; left: 80px; z-index: 3; }
+        .controls {
+            margin-top: 20px;
+        }
+        button {
+            margin: 5px;
+            padding: 8px 15px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Dynamic Z-Index Manipulation</h2>
+    <div class="container">
+        <div class="box box1" id="box1">Box 1</div>
+        <div class="box box2" id="box2">Box 2</div>
+        <div class="box box3" id="box3">Box 3</div>
+    </div>
+
+    <div class="controls">
+        <h3>Adjust Z-Index</h3>
+        <div>
+            <button onclick="increaseZ('box1')">Increase Box 1</button>
+            <button onclick="decreaseZ('box1')">Decrease Box 1</button>
+            <span id="zBox1">Z-Index: 1</span>
+        </div>
+        <div>
+            <button onclick="increaseZ('box2')">Increase Box 2</button>
+            <button onclick="decreaseZ('box2')">Decrease Box 2</button>
+            <span id="zBox2">Z-Index: 2</span>
+        </div>
+        <div>
+            <button onclick="increaseZ('box3')">Increase Box 3</button>
+            <button onclick="decreaseZ('box3')">Decrease Box 3</button>
+            <span id="zBox3">Z-Index: 3</span>
+        </div>
+    </div>
+
+    <script>
+        function increaseZ(id) {
+            let box = document.getElementById(id);
+            let currentZ = parseInt(window.getComputedStyle(box).zIndex);
+            box.style.zIndex = currentZ + 1;
+            updateZIndexDisplay(id, currentZ + 1);
+        }
+
+        function decreaseZ(id) {
+            let box = document.getElementById(id);
+            let currentZ = parseInt(window.getComputedStyle(box).zIndex);
+            if (currentZ > 0) {
+                box.style.zIndex = currentZ - 1;
+                updateZIndexDisplay(id, currentZ - 1);
+            }
+        }
+
+        function updateZIndexDisplay(id, value) {
+            document.getElementById("z" + id.charAt(0).toUpperCase() + id.slice(1)).innerText = "Z-Index: " + value;
+        }
+    </script>
+
+</body>
+</html>

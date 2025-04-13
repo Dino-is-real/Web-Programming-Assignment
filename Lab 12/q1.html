@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23BCE1237</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        canvas {
+            border: 2px solid #333;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Serene Pond Scene with Canvas</h2>
+    <canvas id="pondCanvas" width="500" height="350"></canvas>
+    <script>
+        const canvas = document.getElementById("pondCanvas");
+        const ctx = canvas.getContext("2d");
+
+        let boatPosY = 200;
+        let boatSpeed = 0.3;
+        let boatDirection = 1;
+
+        function drawPond() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          
+            ctx.beginPath();
+            ctx.ellipse(250, 200, 110, 70, 0, 0, Math.PI * 2);
+            ctx.fillStyle = "#87CEEB";
+            ctx.fill();
+            ctx.stroke();
+
+         
+            ctx.beginPath();
+            ctx.moveTo(230, boatPosY);
+            ctx.lineTo(270, boatPosY);
+            ctx.quadraticCurveTo(260, boatPosY + 12, 240, boatPosY + 12);
+            ctx.lineTo(230, boatPosY);
+            ctx.fillStyle = "#8B4513";
+            ctx.fill();
+            ctx.stroke();
+
+         
+            ctx.beginPath();
+            ctx.arc(350, 250, 18, 0, Math.PI * 2);
+            ctx.fillStyle = "#FFD700";
+            ctx.fill();
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.arc(370, 240, 8, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(380, 240);
+            ctx.lineTo(390, 245);
+            ctx.lineTo(380, 250);
+            ctx.fillStyle = "#FFA500";
+            ctx.fill();
+            ctx.stroke();
+
+         
+            ctx.beginPath();
+            ctx.arc(450, 50, 30, 0, Math.PI * 2);
+            ctx.fillStyle = "#FFD700";
+            ctx.fill();
+            ctx.stroke();
+            for (let i = 0; i < 12; i++) {
+                let angle = (i * Math.PI) / 6;
+                let x1 = 450 + 35 * Math.cos(angle);
+                let y1 = 50 + 35 * Math.sin(angle);
+                let x2 = 450 + 45 * Math.cos(angle);
+                let y2 = 50 + 45 * Math.sin(angle);
+                ctx.beginPath();
+                ctx.moveTo(x1, y1);
+                ctx.lineTo(x2, y2);
+                ctx.stroke();
+            }
+
+           
+            ctx.fillStyle = "#FFA07A";
+            ctx.fillRect(30, 150, 80, 80);
+            ctx.fillStyle = "#DC143C";
+            ctx.beginPath();
+            ctx.moveTo(30, 150);
+            ctx.lineTo(70, 110);
+            ctx.lineTo(110, 150);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+
+          
+            ctx.fillStyle = "#8B4513";
+            ctx.fillRect(60, 190, 20, 40);
+            ctx.fillStyle = "#ADD8E6";
+            ctx.fillRect(40, 160, 15, 15);
+
+           
+            ctx.fillStyle = "#228B22";
+            ctx.fillRect(400, 250, 5, 40);
+            ctx.beginPath();
+            ctx.ellipse(390, 260, 15, 10, Math.PI / 4, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(410, 260, 15, 10, -Math.PI / 4, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = "#FFC0CB";
+            ctx.beginPath();
+            ctx.arc(405, 230, 20, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+            ctx.fillStyle = "#FFFF00";
+            ctx.beginPath();
+            ctx.arc(405, 230, 5, 0, Math.PI * 2);
+            ctx.fill();
+
+            
+            const stones = [
+                [70, 270, 12], [85, 280, 10], [60, 280, 8],
+                [380, 280, 12], [395, 290, 10], [370, 290, 8]
+            ];
+            ctx.fillStyle = "#808080";
+            stones.forEach(([x, y, r]) => {
+                ctx.beginPath();
+                ctx.arc(x, y, r, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.stroke();
+            });
+        }
+
+        function animateBoat() {
+            boatPosY += boatDirection * boatSpeed;
+            if (boatPosY > 205 || boatPosY < 195) {
+                boatDirection *= -1;
+            }
+            drawPond();
+            requestAnimationFrame(animateBoat);
+        }
+
+        animateBoat();
+    </script>
+</body>
+
+</html>

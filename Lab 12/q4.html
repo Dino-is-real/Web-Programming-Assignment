@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23BCE1237</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .chart-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .chart {
+            width: 45%;
+            min-width: 400px;
+            height: 350px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Dynamic Charts using Plotly.js</h2>
+    <div class="chart-container">
+        <div id="barChart" class="chart"></div>
+        <div id="lineChart" class="chart"></div>
+        <div id="pieChart" class="chart"></div>
+        <div id="donutChart" class="chart"></div>
+    </div>
+
+    <script>
+   
+        const categories = ["Category A", "Category B", "Category C", "Category D"];
+        const values = [30, 20, 50, 40];
+        const colors = ["#FF5733", "#33FF57", "#3357FF", "#FF33A8"];
+
+
+        Plotly.newPlot("barChart", [{
+            x: categories,
+            y: values,
+            type: "bar",
+            marker: { color: colors }
+        }], {
+            title: "Bar Chart Example",
+            xaxis: { title: "Categories" },
+            yaxis: { range: [0, 60], title: "Values" },
+            responsive: true
+        });
+
+    
+        Plotly.newPlot("lineChart", [{
+            x: categories,
+            y: values,
+            type: "scatter",
+            mode: "lines+markers",
+            line: { color: "#FF5733", width: 3 },
+            marker: { size: 8 }
+        }], {
+            title: "Line Chart Example",
+            xaxis: { title: "Categories" },
+            yaxis: { range: [0, 60], title: "Values" },
+            responsive: true
+        });
+
+   
+        Plotly.newPlot("pieChart", [{
+            labels: categories,
+            values: values,
+            type: "pie",
+            marker: { colors: colors }
+        }], {
+            title: "Pie Chart Example",
+            responsive: true
+        });
+
+   
+        Plotly.newPlot("donutChart", [{
+            labels: categories,
+            values: values,
+            type: "pie",
+            hole: 0.4,
+            marker: { colors: colors }
+        }], {
+            title: "Donut Chart Example",
+            responsive: true
+        });
+    </script>
+</body>
+
+</html>
