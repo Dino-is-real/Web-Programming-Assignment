@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23BCE1237</title>
+    <script>
+        let seats = Array(10).fill(null); // Stores passenger names (null means unoccupied)
+
+        function assignSeat(classType) {
+            let start = classType === 1 ? 0 : 5;
+            let end = classType === 1 ? 5 : 10;
+
+            for (let i = start; i < end; i++) {
+                if (seats[i] === null) { // Check for empty seat
+                    let name = prompt("Enter your name:");
+                    if (name) {
+                        seats[i] = { name: name, seatNumber: i + 1, type: classType === 1 ? "First Class" : "Economy" };
+                        alert(`Boarding Pass\nName: ${name}\nSeat: ${i + 1}\nClass: ${seats[i].type}`);
+                    }
+                    checkSeatsFull();
+                    return;
+                }
+            }
+
+            let alternative = classType === 1 ? 2 : 1;
+            let confirmMove = confirm(`No seats available in this class. Would you like to move to ${alternative === 1 ? "First Class" : "Economy"}?`);
+
+            if (confirmMove) {
+                assignSeat(alternative);
+            } else {
+                alert("Next flight leaves in 3 hours.");
+            }
+        }
+
+        function checkSeatsFull() {
+            if (seats.every(seat => seat !== null)) {
+                displayFinalTable();
+            }
+        }
+
+        function displayFinalTable() {
+            let tableContent = "<tr><th>Name</th><th>Seat Number</th><th>Class</th></tr>";
+            seats.forEach(seat => {
+                tableContent += `<tr><td>${seat.name}</td><td>${seat.seatNumber}</td><td>${seat.type}</td></tr>`;
+            });
+            document.getElementById("seatTable").innerHTML = tableContent;
+            document.getElementById("result").style.display = "block";
+        }
+    </script>
+</head>
+<body>
+    <h2>Airline Seat Reservation</h2>
+    <button onclick="assignSeat(1)">First Class</button>
+    <button onclick="assignSeat(2)">Economy</button>
+
+    <div id="result" style="display:none;">
+        <h3>Final Passenger List</h3>
+        <table border="1">
+            <thead id="seatTable"></thead>
+        </table>
+    </div>
+</body>
+</html>

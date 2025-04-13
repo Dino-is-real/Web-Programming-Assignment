@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23BCE1237</title>
+    <script>
+        function classifyTemperatures() {
+            let temperatures = [55,62,68,74,59,45,41,58,60,67,65,78,82,88,91,92,90,93,87,80,78,79,72,68,61,59,55,65];
+            let hotDays = 0, pleasantDays = 0, coldDays = 0;
+            let tableContent = "";
+
+            temperatures.forEach(temp => {
+                let category = "";
+                if (temp >= 85) {
+                    category = "HOT";
+                    hotDays++;
+                } else if (temp >= 60) {
+                    category = "PLEASANT";
+                    pleasantDays++;
+                } else {
+                    category = "COLD";
+                    coldDays++;
+                }
+                tableContent += `<tr><td>${temp}</td><td>${category}</td></tr>`;
+            });
+
+            document.getElementById("temperatureTable").innerHTML = tableContent;
+            document.getElementById("summary").innerHTML = `Hot Days: ${hotDays}, Pleasant Days: ${pleasantDays}, Cold Days: ${coldDays}`;
+        }
+    </script>
+</head>
+<body onload="classifyTemperatures()">
+    <center>
+
+        <h2>Temperature Classification</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Temperature (°F)</th>
+                    <th>Category</th>
+                </tr>
+            </thead>
+            <tbody id="temperatureTable"></tbody>
+        </table>
+        <p id="summary"></p>
+    </center>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23BCE1237</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            width: 250px;
+            margin: auto;
+            padding: 10px;
+            border: 2px solid black;
+            background-color: #f4f4f4;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 5px;
+            text-align: left;
+        }
+        input, select {
+            width: 100%;
+            padding: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+            background-color: gray;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: darkgray;
+        }
+    </style>
+    <script>
+        function calculateBMI() {
+            let weight = parseFloat(document.getElementById("weight").value);
+            let feet = parseFloat(document.getElementById("feet").value);
+            let inches = parseFloat(document.getElementById("inches").value);
+
+            if (isNaN(weight) || isNaN(feet) || isNaN(inches) || feet < 0 || inches < 0) {
+                alert("Please enter valid values.");
+                return;
+            }
+
+            let heightInInches = (feet * 12) + inches;
+            let bmi = (703 * weight) / (heightInInches * heightInInches);
+            let category = "";
+
+            if (bmi < 18.5) category = "Underweight";
+            else if (bmi >= 18.5 && bmi <= 24.9) category = "Optimal";
+            else if (bmi >= 25 && bmi <= 29.9) category = "Overweight";
+            else category = "Obese";
+
+            document.getElementById("bmiResult").value = bmi.toFixed(2);
+            document.getElementById("bmiCategory").value = category;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <table border="1">
+            <tr>
+                <td colspan="2">
+                    <b>BMI Calculator</b>
+                    <select>
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><b>Enter Your Weight:</b></td>
+            </tr>
+            <tr>
+                <td colspan="2">(in pounds)</td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="number" id="weight"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><b>Enter Your Height:</b></td>
+            </tr>
+            <tr>
+                <td>(feet)</td>
+                <td>(inches)</td>
+            </tr>
+            <tr>
+                <td><input type="number" id="feet"></td>
+                <td><input type="number" id="inches"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="button" onclick="calculateBMI()">Calculate</button></td>
+            </tr>
+            <tr>
+                <td><b>YOUR BMI</b></td>
+                <td><input type="text" id="bmiResult" readonly></td>
+            </tr>
+            <tr>
+                <td><b>Category</b></td>
+                <td><input type="text" id="bmiCategory" readonly></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
