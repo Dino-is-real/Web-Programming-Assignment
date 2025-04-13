@@ -1,0 +1,179 @@
+/* App.css */
+
+.header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+  text-align: center;
+  font-size: 24px;
+}
+
+.content {
+  text-align: center;
+  margin: 20px;
+}
+
+.content button {
+  padding: 10px 20px;
+  background-color: #61dafb;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.content button:hover {
+  background-color: #21a1f1;
+}
+
+.footer {
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+.butn {
+
+  background-color: crimson;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.butn:hover {
+  background-color: darkred;
+}
+
+.lifecycle-wrapper {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.lifecycle-wrapper button {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.lifecycle-wrapper button:hover {
+  background-color: #666;
+}
+
+.counter-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.counter-value {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.counter-buttons button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  margin: 0 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.counter-buttons button:hover {
+  background-color: #0056b3;
+}
+
+/* styles.css */
+
+.joke-container {
+  border: 2px solid #ccc;
+  padding: 20px;
+  max-width: 500px;
+  margin: 20px auto;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  font-family: Arial, sans-serif;
+}
+
+.joke-container p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.joke-container button {
+  padding: 10px 20px;
+  background-color: #ff9900;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.joke-container button:hover {
+  background-color: #e68a00;
+}
+
+.ref-form {
+  text-align: center;
+  margin: 30px auto;
+}
+
+.ref-form input {
+  padding: 10px;
+  width: 200px;
+  margin-right: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.ref-form button {
+  padding: 10px 16px;
+  background-color: #28a745;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.ref-form button:hover {
+  background-color: #218838;
+}
+
+
+.btntheme{
+  background-color: teal;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+}
+
+.pchild{
+  text-align: center;
+  font-size: large;
+}
