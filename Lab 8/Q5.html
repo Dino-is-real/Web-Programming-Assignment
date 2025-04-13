@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23BCE1237</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+        
+      
+        .name-box {
+            display: inline-block;
+            padding: 15px 30px;
+            border: 3px solid black;
+            background-color: white;
+            font-weight: bold;
+            font-size: 24px;
+            color: red;
+            margin-bottom: 20px;
+        }
+
+      
+        .reg-box {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 5px solid red;
+            background-color: white;
+            font-weight: bold;
+            font-size: 20px;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Display Name & Registration Number</h2>
+    <button onclick="showDetails()">Enter Details</button>
+    <br><br>
+    <div id="output"></div>
+
+    <script>
+        function showDetails() {
+            let name = prompt("Enter your name:");
+            if (!name || name.trim() === "") {
+                alert("No input provided. Please enter a valid name.");
+                return;
+            }
+
+            let regNumber = prompt("Enter your registration number:");
+            if (!regNumber || regNumber.trim() === "") {
+                alert("No input provided. Please enter a valid registration number.");
+                return;
+            }
+
+            document.getElementById("output").innerHTML = `
+                <div class="name-box">*${name}*</div><br>
+                <div class="reg-box">${regNumber}</div>
+            `;
+        }
+    </script>
+
+</body>
+</html>

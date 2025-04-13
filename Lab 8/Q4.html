@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23BCE1237</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+        button { margin: 10px; padding: 10px 15px; font-size: 16px; }
+    </style>
+</head>
+<body>
+
+    <h2>Labour Cost Calculator</h2>
+    <button onclick="calculateCharges()">Calculate Charges</button>
+
+    <script>
+        function calculateCharges() {
+            const ratePerHour = 45;
+
+            let hoursWorked = prompt("Enter hours worked:");
+            if (hoursWorked === null || hoursWorked.trim() === "") {
+                alert("No input provided. Please enter a valid number.");
+                return;
+            }
+
+            let costOfMaterials = prompt("Enter cost of materials:");
+            if (costOfMaterials === null || costOfMaterials.trim() === "") {
+                alert("No input provided. Please enter a valid number.");
+                return;
+            }
+
+            hoursWorked = parseFloat(hoursWorked);
+            costOfMaterials = parseFloat(costOfMaterials);
+
+            if (isNaN(hoursWorked) || isNaN(costOfMaterials) || hoursWorked < 0 || costOfMaterials < 0) {
+                alert("Invalid input! Please enter valid numbers.");
+                return;
+            }
+
+            let labourCost = ratePerHour * hoursWorked;
+            let totalCharge = labourCost + costOfMaterials;
+
+            alert(`Labour Cost: Rs.${labourCost}\nTotal Charge: Rs.${totalCharge}`);
+        }
+    </script>
+
+</body>
+</html>

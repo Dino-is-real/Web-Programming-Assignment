@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>23BCE1237</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+        input, button { margin: 10px; padding: 8px; font-size: 16px; }
+    </style>
+</head>
+<body>
+
+    <h2>Confirm Student Status</h2>
+    <button onclick="confirmStudent()">Confirm</button>
+    <h3 id="status">--</h3>
+
+    <script>
+        function confirmStudent() {
+            let isStudent = confirm("Are you a student?");
+            if (isStudent) {
+                let regNo = prompt("Enter your registration number:");
+                if (regNo) {
+                    document.getElementById("status").innerText = "Student confirmed. Registration No: " + regNo;
+                } else {
+                    document.getElementById("status").innerText = "No registration number provided.";
+                }
+            } else {
+                document.getElementById("status").innerText = "You must be a student to proceed.";
+            }
+        }
+    </script>
+
+</body>
+</html>
